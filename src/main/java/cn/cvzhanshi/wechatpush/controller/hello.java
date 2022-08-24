@@ -10,4 +10,9 @@ public class hello {
     public String hello() {
         return "hello";
     }
+
+    @GetMapping("/")
+    public void send() {
+
+    }
 }
