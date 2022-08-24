@@ -1,6 +1,8 @@
 package cn.cvzhanshi.wechatpush.controller;
 
+import cn.cvzhanshi.wechatpush.entity.message;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -11,8 +13,9 @@ public class hello {
         return "hello";
     }
 
-    @GetMapping("/")
-    public void send() {
+    @GetMapping("/foo/bar")
+    public String send(@RequestBody message message) {
 
+        return "success ";
     }
 }
