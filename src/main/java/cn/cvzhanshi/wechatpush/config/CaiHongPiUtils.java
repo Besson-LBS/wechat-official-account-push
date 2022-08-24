@@ -2,7 +2,6 @@ package cn.cvzhanshi.wechatpush.config;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.google.gson.JsonObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -10,7 +9,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,6 +16,50 @@ import java.util.Map;
  * @create 2022-08-04 22:58
  */
 public class CaiHongPiUtils {
+
+    public static void main(String[] args) {
+        String request = request("http://api.tianapi.com/caihongpi/index?key=", "cc255151a359ed7909aed4da8125f703");
+        System.out.println(request);
+    }
+
+    //java环境中文传值时，需特别注意字符编码问题
+//    String httpUrl = "http://api.tianapi.com/caihongpi/index?key=你的APIKEY";
+//    String jsonResult = request(httpUrl);
+//    System.out.println(jsonResult);
+
+    /**
+     * @param httpUrl 请求接口
+     * @param httpArg 参数
+     * @return 返回结果
+     */
+    public static String request(String httpUrl, String httpArg) {
+        BufferedReader reader = null;
+        String result = null;
+        StringBuffer sbf = new StringBuffer();
+        httpUrl = httpUrl + "" + httpArg;
+
+        try {
+            URL url = new URL(httpUrl);
+            HttpURLConnection connection = (HttpURLConnection) url
+                    .openConnection();
+            connection.setRequestMethod("GET");
+            InputStream is = connection.getInputStream();
+            reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            String strRead = null;
+            while ((strRead = reader.readLine()) != null) {
+                sbf.append(strRead);
+                sbf.append("\r\n");
+            }
+            reader.close();
+            result = sbf.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        JSONObject jsonObject = JSONObject.parseObject(result);
+        JSONArray newslist = jsonObject.getJSONArray("newslist");
+        String content = newslist.getJSONObject(0).getString("content");
+        return content;
+    }
 
     public static String getCaiHongPi() {
         String httpUrl = "http://api.tianapi.com/caihongpi/index?key=id";
@@ -48,7 +90,7 @@ public class CaiHongPiUtils {
         return content;
     }
 
-    public static Map<String,String> getEnsentence() {
+    public static Map<String, String> getEnsentence() {
         String httpUrl = "http://api.tianapi.com/ensentence/index?key=id";
         BufferedReader reader = null;
         String result = null;
@@ -75,8 +117,8 @@ public class CaiHongPiUtils {
         String en = newslist.getJSONObject(0).getString("en");
         String zh = newslist.getJSONObject(0).getString("zh");
         Map<String, String> map = new HashMap<>();
-        map.put("zh",zh);
-        map.put("en",en);
+        map.put("zh", zh);
+        map.put("en", en);
         return map;
     }
 }
