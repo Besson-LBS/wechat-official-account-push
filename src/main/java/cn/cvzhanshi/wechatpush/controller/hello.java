@@ -13,6 +13,11 @@ public class hello {
         return "hello";
     }
 
+    @GetMapping("/getVersion")
+    public String getVersion() {
+        return "1";
+    }
+
     @GetMapping("/foo/bar")
     public String send(@RequestBody message message) {
 
