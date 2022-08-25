@@ -15,12 +15,12 @@ import java.util.Map;
  */
 public class WeatherUtils {
     public static void main(String[] args) {
-        System.out.println(getWeather());
+        System.out.println(getWeather("510100"));
     }
-    public static Weather getWeather(){
+    public static Weather getWeather(String value){
         RestTemplate restTemplate = new RestTemplate();
         Map<String,String> map = new HashMap<String,String>();
-        map.put("district_id","510100"); // 成都510100昆山行政代码440305
+        map.put("district_id", value); // 成都510100昆山行政代码440305
         map.put("data_type","all");//这个是数据类型
         map.put("ak","Ii7SDea1IL3tTXeiGvOUzGZSpFh9hnhG");
         String res = restTemplate.getForObject(

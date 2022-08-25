@@ -15,14 +15,14 @@ import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
 public class Pusher {
 
     public static void main(String[] args) {
-        push();
+        push("o-WcX6oTb5P_kKh4YNv0CRBWins4", "510100");
     }
 
     private static String appId = "wx04dedaef83dcabce";
     private static String secret = "65c8f39499f0b8bae2d888ab74338e8d";
 
 
-    public static void push() {
+    public static void push(String toUser, String value) {
         //1，配置
         WxMpInMemoryConfigStorage wxStorage = new WxMpInMemoryConfigStorage();
         wxStorage.setAppId(appId);
@@ -31,11 +31,11 @@ public class Pusher {
         wxMpService.setWxMpConfigStorage(wxStorage);
         //2,推送消息
         WxMpTemplateMessage templateMessage = WxMpTemplateMessage.builder()
-                .toUser("o-WcX6op8NCLS3z3J8Ez1JpBIwxA")
+                .toUser(toUser)
                 .templateId("S4opNGY4Bz-J1PkgaF_mN7z7U7SeeUFaJmZ0BE8I9v4")
                 .build();
         //3,如果是正式版发送模版消息，这里需要配置你的信息
-        Weather weather = WeatherUtils.getWeather();
+        Weather weather = WeatherUtils.getWeather(value);
         String request = CaiHongPiUtils.request("http://api.tianapi.com/caihongpi/index?key=", "cc255151a359ed7909aed4da8125f703");
         templateMessage.addData(new WxMpTemplateData("riqi", weather.getDate() + "  " + weather.getWeek(), "#00BFFF"));
         templateMessage.addData(new WxMpTemplateData("tianqi", weather.getText_now(), "#00FFFF"));
