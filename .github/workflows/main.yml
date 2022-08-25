@@ -1,25 +1,21 @@
-# name属性用来指定这个工作流的名字
-name: HELLO GITHUB ACITON
+name: CareUEveryDay Cron CI
 
-# 这个部分用来指定能够触发工作流执行的事件
 on:
-  # 当对分支main进行push操作的时候，这个工作流就被触发了
-  push:
-    branches: [ main ]
+  schedule:
+    - cron: '0 23 * * *'
 
-
-
-# 工作流是由一个或多个的jobs构成的，在jobs里来说明要交给GitHub aciton执行的任务
 jobs:
-  # 这个jobs中的一个任务，名字叫build(随便怎么取)
   build:
-    # 用来指定这个任务在什么操作系统上跑(服务器是GitHub免费提供的)
     runs-on: ubuntu-latest
-
-    # 指出这个build任务的步骤
     steps:
-
-      # 步骤，这里只写了一个步骤，目的是输出hello github acition
-      - name: Run a one-line script
-        run: echo Hello, github action!
-
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+      - name: SendWxTemplateMsg
+        run: sudo java -jar ./target/CareUEveryDay-1.0.0.jar
