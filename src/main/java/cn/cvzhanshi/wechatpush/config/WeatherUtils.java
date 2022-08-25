@@ -17,6 +17,7 @@ public class WeatherUtils {
     public static void main(String[] args) {
         System.out.println(getWeather("510100"));
     }
+
     public static Weather getWeather(String value){
         RestTemplate restTemplate = new RestTemplate();
         Map<String,String> map = new HashMap<String,String>();
@@ -34,6 +35,7 @@ public class WeatherUtils {
         Weather weather = weathers.get(0);
         weather.setText_now(now.getString("text"));
         weather.setTemp(now.getString("temp"));
+        weather.setDiqu(json.getJSONObject("result").getJSONObject("location").get("name").toString());
         weather.setWind_class(now.getString("wind_class"));
         weather.setWind_dir(now.getString("wind_dir"));
         return weather;

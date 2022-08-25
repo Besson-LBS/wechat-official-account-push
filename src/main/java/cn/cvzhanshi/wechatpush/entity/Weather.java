@@ -22,6 +22,7 @@ public class Weather {
     String wc_night;
     String text_day;
     String wc_day;
+    String diqu;
     // 当前天气
     String text_now;
     // 当前温度

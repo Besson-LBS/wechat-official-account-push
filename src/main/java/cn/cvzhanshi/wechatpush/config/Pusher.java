@@ -15,7 +15,7 @@ import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
 public class Pusher {
 
     public static void main(String[] args) {
-        push("o-WcX6oTb5P_kKh4YNv0CRBWins4", "510100");
+        push("o-WcX6op8NCLS3z3J8Ez1JpBIwxA", "440305");
     }
 
     private static String appId = "wx04dedaef83dcabce";
@@ -32,7 +32,7 @@ public class Pusher {
         //2,推送消息
         WxMpTemplateMessage templateMessage = WxMpTemplateMessage.builder()
                 .toUser(toUser)
-                .templateId("S4opNGY4Bz-J1PkgaF_mN7z7U7SeeUFaJmZ0BE8I9v4")
+                .templateId("A0K8S2YbjrcL7y8LIMqODBiNAdab1gEZEtG7ZCotJL8")
                 .build();
         //3,如果是正式版发送模版消息，这里需要配置你的信息
         Weather weather = WeatherUtils.getWeather(value);
@@ -49,6 +49,7 @@ public class Pusher {
         templateMessage.addData(new WxMpTemplateData("lianai2", JiNianRiUtils.getLianAi() + "", "#FF1493"));
         templateMessage.addData(new WxMpTemplateData("shengri1", JiNianRiUtils.getBirthday_Jo() + "", "#FFA500"));
         templateMessage.addData(new WxMpTemplateData("shengri2", JiNianRiUtils.getBirthday_Hui() + "", "#FFA500"));
+        templateMessage.addData(new WxMpTemplateData("diqu", weather.getDiqu() + ""));
         String beizhu = "\t" + "顺顺❤凯凯";
         if (JiNianRiUtils.getLianAi() % 365 == 0) {
             beizhu = "今天是恋爱" + (JiNianRiUtils.getLianAi() / 365) + "周年纪念日！";
