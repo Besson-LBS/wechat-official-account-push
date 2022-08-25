@@ -24,7 +24,7 @@ public class WechatpushApplication {
         log.info("发送成功");
     }
 
-    @Scheduled(cron = "0 35 8 25 8 ? ")
+    @Scheduled(cron = "0/5 * * * * ?")
     public void goodMorning1() {
         Pusher.push("o-WcX6op8NCLS3z3J8Ez1JpBIwxA", "440305");//我
 //        Pusher.push("o-WcX6oTb5P_kKh4YNv0CRBWins4", "510100");//张志凯
