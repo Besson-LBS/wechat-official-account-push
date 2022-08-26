@@ -14,9 +14,9 @@ public class WechatpushApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WechatpushApplication.class, args);
-//        Pusher.push("o-WcX6op8NCLS3z3J8Ez1JpBIwxA", "440305");//我
         Pusher.push("o-WcX6op8NCLS3z3J8Ez1JpBIwxA", "440305");//我
-        Pusher.push("o-WcX6oTb5P_kKh4YNv0CRBWins4", "510100");//张志凯
+//        Pusher.push("o-WcX6op8NCLS3z3J8Ez1JpBIwxA", "440305");//我
+//        Pusher.push("o-WcX6oTb5P_kKh4YNv0CRBWins4", "510100");//张志凯
     }
 
 
