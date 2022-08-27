@@ -19,19 +19,18 @@ public class WechatpushApplication {
     }
 
 
-//    @Scheduled(cron = "0 20 7 1/1 * ?")
-    @Scheduled(cron = "0 23,24,25,26,27,28,29 0,8 * * ? ")
+    @Scheduled(cron = "0 20 23 * * ? ")
     public void goodMorning() {
         Pusher.push("o-WcX6op8NCLS3z3J8Ez1JpBIwxA", "440305");//我
-//        Pusher.push("o-WcX6oTb5P_kKh4YNv0CRBWins4", "510100");//张志凯
+        Pusher.push("o-WcX6oTb5P_kKh4YNv0CRBWins4", "510100");//张志凯
         log.info("发送成功");
     }
 
-    @Scheduled(cron = "0/5 * * * * ?")
+    @Scheduled(cron = "0 0 0/1 * * ? ")
     public void goodMorning1() {
 //        Pusher.push("o-WcX6op8NCLS3z3J8Ez1JpBIwxA", "440305");//我
 //        Pusher.push("o-WcX6oTb5P_kKh4YNv0CRBWins4", "510100");//张志凯
-        log.info("每五秒发送一次");
+        log.info("每一小时发送一次");
     }
 
 }
