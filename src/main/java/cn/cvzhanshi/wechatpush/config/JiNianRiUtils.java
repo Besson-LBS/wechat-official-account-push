@@ -12,12 +12,12 @@ import java.util.Calendar;
 public class JiNianRiUtils {
 
     public static int getLianAi() {
-        return calculationLianAi("2022-08-12");
+        return calculationLianAi("2022-08-10");
     }
 
     public static int getBirthday_Jo() {
         try {
-            return calculationBirthday("2001-11-14");
+            return calculationBirthday("2001-11-12");
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -26,7 +26,7 @@ public class JiNianRiUtils {
 
     public static int getBirthday_Hui() {
         try {
-            return calculationBirthday("2000-04-15");
+            return calculationBirthday("2000-04-13");
         } catch (ParseException e) {
             e.printStackTrace();
         }
