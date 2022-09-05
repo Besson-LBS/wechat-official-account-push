@@ -53,7 +53,7 @@ public class JiNianRiUtils {
         if (days == 0) {
             return 0;
         } else {
-            return days;
+            return days+1;
         }
     }
 
@@ -66,6 +66,6 @@ public class JiNianRiUtils {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return day;
+        return day+1;
     }
 }
