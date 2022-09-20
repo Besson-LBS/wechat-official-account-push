@@ -1,4 +1,10 @@
 server:
   port: 8080
+spring:
+  datasource:
+    username: "root"
+    password: "0414"
+    url: jdbc:mysql:///ruoyi?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 
