@@ -3,6 +3,7 @@ package cn.cvzhanshi.wechatpush.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.alibaba.fastjson2.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -83,6 +84,7 @@ public class SysMenuEntity implements Serializable {
 	/**
 	 * 创建时间
 	 */
+	@JSONField(format="yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
 	/**
 	 * 更新者
@@ -91,6 +93,7 @@ public class SysMenuEntity implements Serializable {
 	/**
 	 * 更新时间
 	 */
+	@JSONField(format="yyyy-MM-dd HH:mm:ss")
 	private Date updateTime;
 	/**
 	 * 备注
